@@ -32,6 +32,27 @@ class ApiServices {
       throw Exception('Error: $e');
     }
   }
+
+  Future<Movie> getMovieDetails(String imdbID) async {
+    try {
+      final String url = '$baseUrl$apiKey&i=$imdbID';
+      Response response = await get(Uri.parse(url));
+
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> result = jsonDecode(response.body);
+
+        if (result['Response'] == 'True') {
+          return Movie.fromJson(result);
+        } else {
+          throw Exception('Error: ${result['Error']}');
+        }
+      } else {
+        throw Exception('Failed to load data: ${response.reasonPhrase}');
+      }
+    } catch (e) {
+      throw Exception('Error: $e');
+    }
+  }
 }
 
 final movieProvider = Provider<ApiServices>((ref) => ApiServices());

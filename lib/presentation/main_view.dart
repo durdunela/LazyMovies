@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:inkino/models/movie_model.dart';
+import 'package:inkino/presentation/details_view.dart';
 import 'package:inkino/provider/data_provider.dart';
 
 class MainView extends ConsumerStatefulWidget {
@@ -109,6 +110,15 @@ class _MainViewState extends ConsumerState<MainView> {
                                 color: Color(0xffEA526F),
                                 fontWeight: FontWeight.w400),
                           ),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MovieDetailScreen(
+                                    imdbID: movieList[index].imdbID!),
+                              ),
+                            );
+                          },
                         ),
                       ),
                     );
