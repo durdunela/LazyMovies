@@ -4,8 +4,10 @@ import 'package:inkino/models/movie_model.dart';
 
 class MovieDetailScreen extends StatelessWidget {
   final String imdbID;
+  final Movie movie;
 
-  const MovieDetailScreen({super.key, required this.imdbID});
+  const MovieDetailScreen(
+      {super.key, required this.imdbID, required this.movie});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +15,7 @@ class MovieDetailScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Movie Details'),
+        title: Text(movie.title!),
         backgroundColor: const Color(0xffEA526F),
       ),
       body: FutureBuilder<Movie>(

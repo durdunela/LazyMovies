@@ -115,7 +115,8 @@ class _MainViewState extends ConsumerState<MainView> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => MovieDetailScreen(
-                                    imdbID: movieList[index].imdbID!),
+                                    imdbID: movieList[index].imdbID!,
+                                    movie: movieList[index]),
                               ),
                             );
                           },
